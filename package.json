@@ -26,19 +26,18 @@
   "homepage": "https://github.com/daflh/vredeburg#readme",
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
-    "@tailwindcss/cli": "^4.0.1",
+    "@tailwindcss/cli": "^4.0.6",
     "@tailwindcss/typography": "^0.5.16",
     "concurrently": "^9.1.2",
     "cross-env": "^7.0.3",
     "dayjs": "^1.11.13",
     "html-minifier": "^4.0.0",
-    "tailwindcss": "^4.0.1",
+    "tailwindcss": "^4.0.6",
     "terser": "^5.37.0"
   },
   "dependencies": {
     "@notionhq/client": "^2.2.15",
     "axios": "^1.7.9",
-    "dotenv": "^16.4.7",
     "image-size": "^1.2.0",
     "metascraper": "^5.46.7",
     "metascraper-description": "^5.46.5",

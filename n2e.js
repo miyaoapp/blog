@@ -1,4 +1,4 @@
-require("dotenv").config();
+// require("dotenv").config();
 const { Client } = require("@notionhq/client");
 const { NotionToMarkdown } = require("notion-to-md");
 
@@ -89,7 +89,7 @@ ${code.rich_text[0].plain_text}
     database_id: databaseId,
     filter: {
       property: "Status",
-      status: { equals: process.env.STATUS_READY },
+      status: { equals: "Ready" },
     },
     sorts: [
       {
@@ -174,7 +174,7 @@ ${code.rich_text[0].plain_text}
       properties: {
         Status: {
           status: {
-            name: process.env.STATUS_PUBLISHED,
+            name: "Published",
           },
         },
       },
