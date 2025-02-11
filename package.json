@@ -1,0 +1,53 @@
+{
+  "name": "vredeburg",
+  "version": "2.0.0",
+  "description": "A simple starter project to create a blog using Eleventy and Tailwind CSS",
+  "scripts": {
+    "start": "npm run serve",
+    "watch": "concurrently -c auto npm:css:watch npm:11ty:watch",
+    "serve": "concurrently -c auto npm:css:watch npm:11ty:serve",
+    "build": "npm run css:build && npm run 11ty:build",
+    "debug": "cross-env DEBUG=Eleventy* npm run build",
+    "11ty:watch": "cross-env NODE_ENV=development eleventy --watch --incremental",
+    "11ty:serve": "cross-env NODE_ENV=development eleventy --serve --incremental",
+    "11ty:build": "cross-env NODE_ENV=production eleventy",
+    "css:watch": "npx @tailwindcss/cli -i src/assets/css/main.css -o dist/assets/css/main.css -w",
+    "css:build": "npx @tailwindcss/cli -i src/assets/css/main.css -o dist/assets/css/main.css -m"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daflh/vredeburg.git"
+  },
+  "author": "Dafiul Haq",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/daflh/vredeburg/issues"
+  },
+  "homepage": "https://github.com/daflh/vredeburg#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "@tailwindcss/cli": "^4.0.1",
+    "@tailwindcss/typography": "^0.5.16",
+    "concurrently": "^9.1.2",
+    "cross-env": "^7.0.3",
+    "dayjs": "^1.11.13",
+    "html-minifier": "^4.0.0",
+    "tailwindcss": "^4.0.1",
+    "terser": "^5.37.0"
+  },
+  "dependencies": {
+    "@notionhq/client": "^2.2.15",
+    "axios": "^1.7.9",
+    "dotenv": "^16.4.7",
+    "image-size": "^1.2.0",
+    "metascraper": "^5.46.7",
+    "metascraper-description": "^5.46.5",
+    "metascraper-image": "^5.46.5",
+    "metascraper-logo": "^5.46.5",
+    "metascraper-logo-favicon": "^5.46.5",
+    "metascraper-publisher": "^5.46.5",
+    "metascraper-title": "^5.46.5",
+    "metascraper-url": "^5.46.5",
+    "notion-to-md": "^3.1.4"
+  }
+}

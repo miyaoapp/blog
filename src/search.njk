@@ -1,0 +1,28 @@
+---
+layout: default
+title: Search
+---
+<div style="max-width: 800px; margin-left: auto; margin-right: auto;">
+<script src="/pagefind/pagefind-ui.js"></script>
+<div id="search"></div>
+<script>
+    const url = new URL(window.location.href);
+    window.addEventListener("DOMContentLoaded", (event) => {
+        let search= new PagefindUI({
+            element: "#search",
+            excerptLength : 10,
+            translations   : {
+                placeholder  : '記事を検索 ...',
+                clear_search : 'クリア',
+                load_more    : '結果をさらに表示',
+                zero_results : '「[SEARCH_TERM]」に一致する記事は見つかりませんでした 🙇‍♂️',
+                many_results : '「[SEARCH_TERM]」の検索結果（[COUNT] 件）',
+                one_result   : '「[SEARCH_TERM]」の検索結果（[COUNT] 件）',
+                searching    : '「[SEARCH_TERM]」を検索しています...',
+            },
+            debounceTimeoutMs: 400,
+        });
+        search.triggerSearch(url.searchParams.get('q'));
+    });
+</script>
+</div>

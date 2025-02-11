@@ -1,0 +1,348 @@
+@import url('https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+@import 'tailwindcss';
+
+@config '../../../tailwind.config.js';
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
+
+@utility visually-hidden {
+  @apply block absolute h-px w-px overflow-hidden whitespace-nowrap;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(1px);
+}
+
+@layer base {
+  body {
+    font-family: Nunito, Kosugi Maru;
+  }
+}
+/* Inter,system-ui,-apple-system,BlinkMacSystemFont,helvetica,Arial,sans-serif */
+
+@layer utilities {
+  .strp { /* ストライプ背景 */
+    background: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 3px,
+    #cfe 3px,
+    #cfe 7px
+    );
+  }
+
+  h1 {
+    position: relative;
+    padding: 0.3em;
+    text-align: center;
+    color: #e60 !important;
+  }
+  h1::before,
+  h1::after {
+    position: absolute;
+    left: 0;
+    content: "";
+    width: 100%;
+    height: 6px;
+    box-sizing: border-box;
+  }
+  h1::before {
+    top: 0;
+    border-top: 2px solid #f80;
+    border-bottom: 1px solid #f80;
+  }
+  h1::after {
+    bottom: 0;
+    border-top: 1px solid #f80;
+    border-bottom: 2px solid #f80;
+  }
+  h2 {
+    position: relative;
+    padding: 0.1em 0.3em 0.1em 1.8em;
+    background: #90caf9;
+    border-radius: 4px;
+    color: white !important;
+  }
+  h2:before,
+  h2:after {
+    content: "";
+    position: absolute;
+    display: block;
+  }
+  h2:before {
+    top: -0.1em;
+    left: 0.5em;
+    width: 20px;
+    height: 23px;
+    padding: 5px 0 0 0;
+    background: #1976d2;
+    text-align: center;
+  }
+  h2:after {
+    top: 0.35em;
+    left: 0.5em;
+    width: 0;
+    height: 0;
+    border: 10px solid;
+    border-color: transparent #1976d2;
+  }
+  h3 {
+    color: brown !important;
+    position: relative;
+    padding: 0.1em 0.3em 0.1em 1.6em;
+  }
+  h3::before,
+  h3::after {
+    position: absolute;
+    content: "□";
+    width: 4px;
+    height: 4px;
+    color: #fbc02d;
+  }
+  h3::before {
+    left: 0;
+    top: 0;
+  }
+  h3::after {
+    left: 5.5px;
+    top: 7.5px;
+  }
+  #content p, div.code-toolbar {
+    max-width: 56rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .balloon,
+  .balloon_right {
+    width: 100%;
+    margin-top: 0.5em !important;
+    overflow: hidden;
+  }
+  
+  .balloon .faceicon {
+    float: left;
+    margin-right: -90px;
+    width: 80px;
+  }
+  
+  .balloon .faceicon img,
+  .balloon_right .faceicon_right img {
+    width: 100%;
+    height: auto;
+    border: solid 3px #d7ebfe;
+  }
+  
+  .balloon .faceicon p,
+  .balloon_right .faceicon_right p {
+    text-align: center;
+    top: -10px;
+    position: relative;
+  }
+  
+  .balloon .chatting,
+  .balloon_right .chatting {
+    width: 100%;
+  }
+  
+  .says {
+    position: relative;
+    margin: 5px 0 0 105px;
+    padding: 17px 13px;
+    border-radius: 12px;
+    background: #FFF;
+    border: solid 3px #d7ebfe;
+  }
+  
+  .says:before {
+    content: "";
+    position: absolute;
+    top: 34px;
+    left: -20px;
+    margin-top: -16px;
+    border: 12px solid transparent;
+    border-right: 12px solid #FFF;
+    z-index: 2;
+  }
+  
+  .says:after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 18px;
+    left: -24px;
+    border: 12px solid transparent;
+    border-right: 12px solid #d7ebfe;
+  }
+  
+  .says p,
+  .says_right p {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .balloon_right .faceicon_right {
+    float: right;
+    margin-right: 0px;
+    width: 80px;
+  }
+  
+  .says_right {
+    position: relative;
+    margin: 5px 105px 0 0px;
+    padding: 17px 13px;
+    border-radius: 12px;
+    background: #FFF;
+    border: solid 3px #d7ebfe;
+  }
+  
+  .says_right:before {
+    content: "";
+    position: absolute;
+    top: 34px;
+    right: -20px;
+    margin-top: -16px;
+    border: 12px solid transparent;
+    border-left: 12px solid #FFF;
+    z-index: 2;
+  }
+  
+  .says_right:after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 18px;
+    right: -24px;
+    border: 12px solid transparent;
+    border-left: 12px solid #d7ebfe;
+  }
+  
+  /* costomize */
+  .faceicon img,
+  .faceicon_right img {
+    margin: 0;
+    border-radius: 50%;
+    background-color: white;
+    border: solid 2px #d7ebfe !important;
+  }
+  
+  .balloon .faceicon,
+  .balloon_right .faceicon_right {
+    width: 100px;
+  }
+  
+  .balloon,
+  .balloon_right {
+    margin: 0 auto;
+    max-width: var(--container-4xl);
+  }
+  
+  .says {
+    margin: 15px 0 0 115px;
+    border: solid 2px #c99;
+    background-color: #fed;
+    width: fit-content;
+    padding: 17px 24px;
+  }
+  
+  .says:before {
+    left: -21px;
+    border-right: 12px solid #fed;
+  }
+  
+  .says:after {
+    border-right: 12px solid #c99;
+  }
+  
+  .says_right {
+    margin: 15px 115px 0 auto;
+    /*    text-align: right; */
+    border: solid 2px #c99;
+    background-color: #fee;
+    width: fit-content;
+    padding: 17px 24px;
+  }
+  
+  .says_right:before {
+    right: -21px;
+    border-left: 12px solid #fee;
+  }
+  
+  .says_right:after {
+    border-left: 12px solid #c99;
+  }
+  
+  .says_right p {
+    width: fit-content !important;
+    margin: auto !important;
+    margin-right: 0 !important;
+  }
+  
+  .faceicon p,
+  .faceicon_right p {
+    font-size: small;
+    margin: 0;
+    top: 0 !important;
+  }
+  
+  
+  
+  .tamathink {
+    position: relative;
+    margin: 15px 0 0 145px;
+    /* padding: 17px 13px; */
+    border-radius: 12px;
+    background: #fed;
+    border: solid 2px #edc;
+    width: fit-content;
+    padding: 17px 24px;
+  }
+  
+  .tamathink p {
+    margin: 0;
+    padding: 0;
+    color: gray;
+  }
+  
+  .think-l-bal-s {
+    /* display: inline-block; */
+    position: relative;
+    left: 96px;
+    top: 28px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #fed;
+    border: solid 2px #edc;
+    float: left;
+  }
+  
+  .think-l-bal-l {
+    /* display: inline-block; */
+    position: relative;
+    left: 100px;
+    top: 22px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #fed;
+    border: solid 2px #edc;
+    float: left;
+  }
+}
