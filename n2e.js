@@ -15,6 +15,16 @@ const dlFile = async (target_url, save_path) => {
   });
   await fs.writeFile(save_path, new Buffer.from(buf.data), "binary");
 };
+// file exists
+const exists = async filePath => {
+  try {
+    await fs.access(filePath);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 
 // 記事データをマークダウンに変換
 // const getContent = async (id) => {
@@ -61,6 +71,10 @@ ${code.rich_text[0].plain_text}
     if (image.type == "file") {
       let fname = image.file.url.split("?")[0].split("/").pop();
       let fpath = path.join("./src/posts/img", fname);
+      
+      if (!(await exists("./src/posts/img"))){
+        await fs.mkdir("./src/posts/img");
+      }
       await dlFile(image.file.url, fpath);
       const dimensions = sizeOf(fpath);
       if (dimensions.width > 240) {
@@ -135,6 +149,9 @@ ${code.rich_text[0].plain_text}
       });
     } else front_matter += `date: ${page.date}\n`;
     if (page.thumb !== undefined && page.thumb.file !== undefined) {
+      if (!(await exists("./src/posts/img"))){
+        await fs.mkdir("./src/posts/img");
+      }
       await dlFile(
         // Download thumb file
         page.thumb.file.url,
