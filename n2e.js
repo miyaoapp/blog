@@ -7,6 +7,10 @@ const path = require("path");
 const axios = require("axios");
 const sizeOf = require("image-size");
 
+/** 定数 */
+const IMG_DIR = path.join(__dirname, "src/posts/img");
+console.log(IMG_DIR)
+
 /** 関数 */
 // リモートファイル（バイナリ）ダウンロード
 const dlFile = async (target_url, save_path) => {
@@ -70,10 +74,10 @@ ${code.rich_text[0].plain_text}
     let caption = image.caption[0]?.text.content || "";
     if (image.type == "file") {
       let fname = image.file.url.split("?")[0].split("/").pop();
-      let fpath = path.join("./src/posts/img", fname);
+      let fpath = path.join(IMG_DIR, fname);
       
-      if (!(await exists("./src/posts/img"))){
-        await fs.mkdir("./src/posts/img");
+      if (!(await exists(IMG_DIR))){
+        await fs.mkdir(IMG_DIR);
       }
       await dlFile(image.file.url, fpath);
       const dimensions = sizeOf(fpath);
@@ -149,13 +153,13 @@ ${code.rich_text[0].plain_text}
       });
     } else front_matter += `date: ${page.date}\n`;
     if (page.thumb !== undefined && page.thumb.file !== undefined) {
-      if (!(await exists("./src/posts/img"))){
-        await fs.mkdir("./src/posts/img");
+      if (!(await exists(IMG_DIR))){
+        await fs.mkdir(IMG_DIR);
       }
       await dlFile(
         // Download thumb file
         page.thumb.file.url,
-        path.join("./src/posts/img", page.thumb.name)
+        path.join(IMG_DIR, page.thumb.name)
       );
       front_matter += `thumb: "${page.thumb.name}"\n`;
     }
