@@ -1,4 +1,3 @@
-// require("dotenv").config();
 const { Client } = require("@notionhq/client");
 const { NotionToMarkdown } = require("notion-to-md");
 
@@ -9,7 +8,6 @@ const sizeOf = require("image-size");
 
 /** 定数 */
 const IMG_DIR = path.join(__dirname, "src/posts/img");
-console.log(IMG_DIR)
 
 /** 関数 */
 // リモートファイル（バイナリ）ダウンロード
@@ -19,22 +17,6 @@ const dlFile = async (target_url, save_path) => {
   });
   await fs.writeFile(save_path, new Buffer.from(buf.data), "binary");
 };
-// file exists
-const exists = async filePath => {
-  try {
-    await fs.access(filePath);
-    return true;
-  } catch {
-    return false;
-  }
-}
-
-
-// 記事データをマークダウンに変換
-// const getContent = async (id) => {
-//   const mdblocks = await n2m.pageToMarkdown(id);
-//   return n2m.toMarkdownString(mdblocks);
-// };
 
 module.exports = async () => {
   const notion = new Client({ auth: process.env.NOTION_KEY });
@@ -76,9 +58,6 @@ ${code.rich_text[0].plain_text}
       let fname = image.file.url.split("?")[0].split("/").pop();
       let fpath = path.join(IMG_DIR, fname);
       
-      if (!(await exists(IMG_DIR))){
-        await fs.mkdir(IMG_DIR);
-      }
       await dlFile(image.file.url, fpath);
       const dimensions = sizeOf(fpath);
       if (dimensions.width > 240) {
@@ -153,9 +132,6 @@ ${code.rich_text[0].plain_text}
       });
     } else front_matter += `date: ${page.date}\n`;
     if (page.thumb !== undefined && page.thumb.file !== undefined) {
-      if (!(await exists(IMG_DIR))){
-        await fs.mkdir(IMG_DIR);
-      }
       await dlFile(
         // Download thumb file
         page.thumb.file.url,
