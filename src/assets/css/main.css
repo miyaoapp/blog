@@ -32,11 +32,26 @@
 @layer base {
   body {
     font-family: Nunito, Kosugi Maru;
+    animation: fadeIn 0.3s ease;
   }
 }
 /* Inter,system-ui,-apple-system,BlinkMacSystemFont,helvetica,Arial,sans-serif */
 
 @layer utilities {
+
+  #site_title {
+    filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.6));
+  }
+
+  #site_title:hover {
+    opacity: .9;
+  }
+
+  #menu {
+    margin-top: auto;
+    filter: drop-shadow(1px 1px 1.5px rgba(0, 0, 0, 0.6));
+  }
+  
   .strp { /* ストライプ背景 */
     background: repeating-linear-gradient(
     -45deg,
@@ -345,4 +360,15 @@
     border: solid 2px #edc;
     float: left;
   }
+
+  @keyframes fadeIn {
+    0% {
+        opacity: 0;
+        /* 透明 */
+    }
+
+    100% {
+        opacity: 1;
+    }
+  }  
 }

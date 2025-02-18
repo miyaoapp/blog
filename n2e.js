@@ -145,6 +145,7 @@ ${code.rich_text[0].plain_text}
       for (const tag of page.tags) {
         tagstr += `  - ${tag.name}\n`;
       }
+      front_matter += tagstr;
     }
     front_matter += `---\n`;
 

@@ -1,6 +1,6 @@
 module.exports = {
-  title: 'miyao.app',
-  description: 'ミャオ・あっぷ',
+  title: 'ミャオぶろぐ',
+  description: 'ミャオあっぷ・ブログ',
   keywords: ['eleventy', 'template', 'simple', 'clean'],
   url: 'https://miyao.app', // your site url without trailing slash
   paginate: 6, // how many posts you want to show for each page
