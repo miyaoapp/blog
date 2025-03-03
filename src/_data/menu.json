@@ -12,8 +12,8 @@
         "url": "https://mail.miyao.app"
     },
     {
-        "label": "GitHub",
-        "url": "https://github.com/ocogeclub/miyaoblog",
+        "label": "MAGit",
+        "url": "https://git.miyao.app/miyaoapp/blog",
         "newTab": true
     }
 ]

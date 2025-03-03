@@ -80,13 +80,13 @@ ${code.rich_text[0].plain_text}
   });
   /*** Customize notion-to-md END ***************************************************************/
 
-  // 状態が Published の記事を取得
+  // 状態が Ready の記事を取得
   const databaseId = process.env.NOTION_BLOG_ID;
   const db = await notion.databases.query({
     database_id: databaseId,
     filter: {
       property: "Status",
-      status: { equals: "Published" },
+      status: { equals: "Ready" },
     },
     sorts: [
       {
@@ -165,6 +165,18 @@ ${code.rich_text[0].plain_text}
     } catch (e) {
       console.log(e);
     }
+
+    // Update status to Published
+    await notion.pages.update({
+      page_id: page.id,
+      properties: {
+        Status: {
+          status: {
+            name: "Published",
+          },
+        },
+      },
+    });
 
     //   // Print block list in page
     //   const response = await notion.blocks.children.list({

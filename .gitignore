@@ -1,3 +1,11 @@
+# notion2eleventy
+dist
+posts/*.md
+posts/img/*.png
+posts/img/*.jpg
+posts/img/*.gif
+posts/img/*.webp
+
 # Logs
 logs
 *.log
